@@ -1,0 +1,1 @@
+Create receipe based on available ingredients. output ingredient list, instructions, cooking time and nutrition information.
