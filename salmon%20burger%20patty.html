@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Salmon Burger Patties | Simple Oven Recipe</title>
+<style>
+  :root {
+    --ink: #24323a;
+    --muted: #65747b;
+    --paper: #fffdf9;
+    --cream: #f7f1e8;
+    --coral: #d96e55;
+    --coral-dark: #a94734;
+    --teal: #2c716b;
+    --line: #e8dfd3;
+    --shadow: 0 18px 48px rgba(45, 54, 53, .10);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+  .page { width: min(1080px, calc(100% - 32px)); margin: 32px auto; }
+  .hero {
+    overflow: hidden;
+    position: relative;
+    border-radius: 28px;
+    padding: clamp(28px, 6vw, 64px);
+    background: linear-gradient(125deg, #f9dfd1 0%, #f6c9b5 52%, #f1bda5 100%);
+    box-shadow: var(--shadow);
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 999px;
+    background: rgba(255,255,255,.68); color: var(--coral-dark);
+    text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 800;
+  }
+  h1 { font-size: clamp(2.35rem, 6vw, 4.6rem); line-height: 1.03; letter-spacing: -.055em; max-width: 650px; margin: 20px 0 16px; }
+  .intro { max-width: 610px; font-size: 1.08rem; color: #604c45; margin: 0; }
+  .hero-art { position: absolute; width: min(35%, 300px); right: 4%; bottom: -8%; opacity: .92; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0 26px; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+  .stat span { display: block; font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+  .stat strong { display: block; margin-top: 4px; font-size: 1.1rem; }
+  .layout { display: grid; grid-template-columns: .88fr 1.35fr; gap: 18px; align-items: start; }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: clamp(20px, 3vw, 30px); box-shadow: 0 8px 24px rgba(45,54,53,.04); }
+  h2 { margin: 0 0 18px; font-size: 1.45rem; letter-spacing: -.025em; }
+  h3 { font-size: 1rem; margin: 22px 0 8px; }
+  .subtle { color: var(--muted); font-size: .92rem; margin-top: -10px; }
+  ul, ol { padding-left: 1.25rem; margin: 0; }
+  li { padding-left: 4px; margin: 10px 0; }
+  .ingredient-list { list-style: none; padding: 0; }
+  .ingredient-list li { display: flex; gap: 11px; align-items: flex-start; padding: 10px 0; margin: 0; border-bottom: 1px solid #f0e9df; }
+  .ingredient-list li:last-child { border-bottom: 0; }
+  .ingredient-list input { accent-color: var(--teal); width: 18px; height: 18px; margin-top: 4px; flex: 0 0 auto; }
+  .ingredient-list label { cursor: pointer; }
+  .ingredient-list input:checked + label { color: #7b8587; text-decoration: line-through; }
+  .optional { color: var(--muted); font-size: .82rem; }
+  .step { display: grid; grid-template-columns: 36px 1fr; gap: 14px; margin: 18px 0; }
+  .step-num { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: #e4f0ec; color: var(--teal); font-weight: 800; }
+  .step p { margin: 3px 0 0; }
+  .tip { margin-top: 22px; padding: 16px 18px; border-left: 4px solid var(--coral); border-radius: 0 12px 12px 0; background: #fff1e9; color: #69483e; }
+  .nutrition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .nutrient { padding: 14px 10px; background: #f5f8f5; border-radius: 14px; text-align: center; }
+  .nutrient strong { display: block; font-size: 1.15rem; color: var(--teal); }
+  .nutrient span { font-size: .78rem; color: var(--muted); }
+  .fine-print { color: var(--muted); font-size: .82rem; margin: 14px 0 0; }
+  .footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 24px 0 8px; }
+  .print-btn { border: 0; border-radius: 999px; padding: 11px 17px; background: var(--ink); color: white; font: inherit; font-weight: 700; cursor: pointer; }
+  .topline { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+  @media (max-width: 760px) {
+    .page { width: min(100% - 20px, 640px); margin: 10px auto; }
+    .hero { border-radius: 22px; padding: 28px 24px 180px; }
+    .hero-art { width: 205px; max-width: 48%; right: 5%; bottom: -8px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 9px; margin: 12px 0 16px; }
+    .layout { grid-template-columns: 1fr; gap: 12px; }
+    .nutrition-grid { grid-template-columns: repeat(2, 1fr); }
+    .topline { align-items: flex-start; }
+  }
+  @media print {
+    body { background: white; }
+    .page { width: 100%; margin: 0; }
+    .hero, .panel, .stat { box-shadow: none; }
+    .hero { padding: 28px; }
+    .print-btn { display: none; }
+    .layout { grid-template-columns: .9fr 1.3fr; }
+    .panel, .hero { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <span class="eyebrow">Easy oven recipe · Pantry-friendly</span>
+    <h1>Salmon Burger Patties</h1>
+    <p class="intro">Tender, savory salmon patties made with canned pink salmon, egg, and a little mayonnaise. Bake them until golden, then tuck into a bun or serve with a crisp salad.</p>
+    <svg class="hero-art" viewBox="0 0 300 245" role="img" aria-label="Illustration of a salmon patty on a plate">
+      <ellipse cx="154" cy="190" rx="126" ry="36" fill="#d88e76" opacity=".3"/>
+      <ellipse cx="151" cy="169" rx="125" ry="43" fill="#fffaf1"/>
+      <ellipse cx="151" cy="166" rx="102" ry="29" fill="#e8e0d3"/>
+      <path d="M74 137 Q74 100 111 92 Q155 79 199 98 Q226 112 220 139 Q213 163 158 164 Q99 164 79 150Z" fill="#c65d46" stroke="#9f4637" stroke-width="3"/>
+      <path d="M88 124 Q120 109 147 121 T207 121 M88 139 Q124 128 154 140 T207 137" fill="none" stroke="#f2a087" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+      <g fill="#f6d59c"><circle cx="111" cy="112" r="3"/><circle cx="176" cy="108" r="3"/><circle cx="193" cy="143" r="3"/><circle cx="130" cy="150" r="3"/><circle cx="153" cy="101" r="2.5"/></g>
+      <path d="M222 83 Q244 65 257 78 Q245 95 228 94Z" fill="#6d9b68"/>
+      <path d="M224 94 Q244 99 252 119" stroke="#6d9b68" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M64 76 Q83 63 94 78 Q84 93 68 91Z" fill="#7ca56d"/>
+    </svg>
+  </header>
+
+  <section class="stats" aria-label="Recipe summary">
+    <div class="stat"><span>Prep</span><strong>10 minutes</strong></div>
+    <div class="stat"><span>Bake</span><strong>15–20 minutes</strong></div>
+    <div class="stat"><span>Total</span><strong>25–30 minutes</strong></div>
+    <div class="stat"><span>Makes</span><strong>4–6 patties</strong></div>
+  </section>
+
+  <div class="layout">
+    <aside class="panel">
+      <div class="topline">
+        <h2>Ingredients</h2>
+        <button class="print-btn" type="button" onclick="window.print()">Print recipe</button>
+      </div>
+      <p class="subtle">Check off each item as you prepare it.</p>
+      <ul class="ingredient-list">
+        <li><input id="i1" type="checkbox"><label for="i1"><strong>1 can (14.75 oz / 418 g)</strong> pink salmon, drained and flaked; remove any large bones or skin if preferred</label></li>
+        <li><input id="i2" type="checkbox"><label for="i2"><strong>2 large eggs</strong>, lightly beaten</label></li>
+        <li><input id="i3" type="checkbox"><label for="i3"><strong>2 tablespoons mayonnaise</strong></label></li>
+        <li><input id="i4" type="checkbox"><label for="i4"><strong>2–4 tablespoons cassava flour</strong> <span class="optional">(optional; add as needed to help bind)</span></label></li>
+        <li><input id="i5" type="checkbox"><label for="i5"><strong>½ teaspoon paprika</strong> <span class="optional">(optional)</span></label></li>
+        <li><input id="i6" type="checkbox"><label for="i6"><strong>¼ teaspoon garlic powder</strong> and <strong>¼ teaspoon onion powder</strong> <span class="optional">(optional)</span></label></li>
+        <li><input id="i7" type="checkbox"><label for="i7"><strong>Black pepper</strong> to taste, plus salt only if needed</label></li>
+        <li><input id="i8" type="checkbox"><label for="i8">A little oil or cooking spray for the baking sheet</label></li>
+      </ul>
+      <div class="tip"><strong>Texture tip:</strong> Drain the salmon well. Start with 2 tablespoons of cassava flour, then add more only if the mixture feels too wet to shape.</div>
+    </aside>
+
+    <section class="panel">
+      <h2>Instructions</h2>
+      <div class="step"><div class="step-num">1</div><div><strong>Heat the oven</strong><p>Preheat to <strong>400°F (200°C)</strong>. Lightly oil or line a baking sheet with parchment.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div><strong>Prepare the salmon</strong><p>Drain the canned salmon thoroughly and flake it in a medium bowl with a fork.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div><strong>Mix the patties</strong><p>Stir in the eggs, mayonnaise, paprika, garlic powder, onion powder, and pepper. Add cassava flour a tablespoon at a time until the mixture holds together. Taste before adding salt.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div><strong>Shape</strong><p>Form 4–6 evenly sized patties, about ¾ inch thick. Place them on the prepared baking sheet and gently flatten the tops.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div><strong>Bake until set and golden</strong><p>Bake for <strong>15–20 minutes</strong>, turning carefully halfway through if you want both sides browned. Thicker patties may need a little longer; cook until the centers are hot and the patties hold together.</p></div></div>
+      <div class="step"><div class="step-num">6</div><div><strong>Rest and serve</strong><p>Let the patties rest for 2 minutes. Serve in burger buns or lettuce wraps, or alongside vegetables and a squeeze of lemon if available.</p></div></div>
+      <div class="tip"><strong>Make-ahead:</strong> Shape the patties up to a day ahead, cover, and refrigerate. Handle gently when moving them to the baking sheet.</div>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:18px">
+    <h2>Estimated nutrition</h2>
+    <p class="subtle">Approximate values per patty, assuming 6 patties and all listed core ingredients, including 2 tablespoons mayonnaise and 2 tablespoons cassava flour. Seasonings and serving buns are not included.</p>
+    <div class="nutrition-grid">
+      <div class="nutrient"><strong>155</strong><span>Calories</span></div>
+      <div class="nutrient"><strong>18 g</strong><span>Protein</span></div>
+      <div class="nutrient"><strong>8 g</strong><span>Total fat</span></div>
+      <div class="nutrient"><strong>2 g</strong><span>Carbohydrates</span></div>
+      <div class="nutrient"><strong>1 g</strong><span>Fiber</span></div>
+      <div class="nutrient"><strong>1 g</strong><span>Sugars</span></div>
+      <div class="nutrient"><strong>~300 mg</strong><span>Sodium*</span></div>
+      <div class="nutrient"><strong>6</strong><span>Patties per batch</span></div>
+    </div>
+    <p class="fine-print">*Sodium varies significantly by canned salmon brand and whether salt is added. Nutrition is an estimate, not a lab analysis; values change with patty size, mayonnaise, flour amount, and the product labels you use.</p>
+  </section>
+
+  <footer class="footer">Simple ingredients, crisp edges, tender center. Enjoy!</footer>
+</main>
+</body>
+</html>
