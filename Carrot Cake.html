@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f0e5">
+<title>Carrot Cake | Almond & Coconut Flour</title>
+<style>
+  :root{--ink:#2f3028;--muted:#6c6d60;--cream:#fbf8f1;--paper:#fffdf8;--carrot:#c96d36;--sage:#68775b;--line:#e8dfd1;--soft:#f4eadb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .hero{background:linear-gradient(135deg,#f4e5d2,#f9f3e9 58%,#e8ebdc);padding:clamp(32px,7vw,76px) 20px 44px;border-bottom:1px solid var(--line)}
+  .wrap{width:min(1040px,100% - 36px);margin:auto}
+  .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:var(--sage)}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,7vw,4.7rem);line-height:1.02;letter-spacing:-.04em;margin:.35rem 0 1rem;font-weight:600}
+  .intro{max-width:650px;color:#55564b;font-size:1.08rem}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{background:#fffaf1;border:1px solid #e6d8c5;border-radius:999px;padding:7px 13px;font-size:.88rem}
+  main{padding:32px 0 60px}
+  .layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:24px;align-items:start}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,30px);box-shadow:0 8px 26px #59401a08}
+  h2{font-family:Georgia,"Times New Roman",serif;font-size:1.7rem;line-height:1.2;margin:0 0 18px}
+  h3{font-size:1.02rem;margin:24px 0 8px}
+  .sub{color:var(--muted);font-size:.92rem;margin-top:-10px}
+  ul,ol{padding-left:1.25rem;margin:0}
+  li{padding-left:4px;margin:0 0 10px}
+  li::marker{color:var(--carrot);font-weight:700}
+  .ingredient-list{list-style:none;padding:0}
+  .ingredient-list li{display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid #f0e9df;padding:10px 0;margin:0}
+  .ingredient-list li:last-child{border-bottom:0}
+  input[type=checkbox]{accent-color:var(--sage);margin-top:6px;width:17px;height:17px;flex:0 0 auto}
+  .amount{font-weight:750;min-width:94px;color:#4b503f}
+  .note{background:#f3eee3;border-left:4px solid var(--sage);border-radius:8px;padding:13px 15px;margin-top:20px;color:#55564b;font-size:.93rem}
+  .warning{background:#fff1e7;border-left-color:var(--carrot)}
+  .steps{counter-reset:step;list-style:none;padding:0}
+  .steps li{counter-increment:step;display:grid;grid-template-columns:34px 1fr;gap:12px;margin:0 0 18px;padding:0}
+  .steps li::before{content:counter(step);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--soft);color:#8c4b29;font-weight:800}
+  .nutrition{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 18px}
+  .stat{background:#f7f2e9;border-radius:12px;padding:13px 10px;text-align:center}
+  .stat strong{display:block;font-size:1.25rem;line-height:1.3}
+  .stat span{font-size:.78rem;color:var(--muted)}
+  .nutrition-list{font-size:.92rem;color:#55564b}
+  .footer{margin-top:24px;text-align:center;color:var(--muted);font-size:.85rem}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  button{border:1px solid #d8c8b4;background:#fffaf1;color:var(--ink);border-radius:999px;padding:9px 15px;font:inherit;font-size:.9rem;cursor:pointer}
+  button:hover{background:#efe3d2}
+  @media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding-bottom:34px}.wrap{width:min(100% - 28px,1040px)}}
+  @media print{body{background:#fff;font-size:11pt}.hero{padding:20px 0;background:#fff}.wrap{width:100%}main{padding:16px 0}.layout{grid-template-columns:1fr 1fr;gap:12px}.card{box-shadow:none;padding:16px;break-inside:avoid}.toolbar{display:none}.footer{margin-top:12px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Home baking · Grain-free inspired</div>
+    <h1>Carrot Cake</h1>
+    <p class="intro">A warmly spiced, lightly sweetened carrot cake built around blanched almond flour, a little coconut flour, fresh shredded carrot, and European-style butter. This version uses only the listed ingredients plus water and optional spices.</p>
+    <div class="chips">
+      <span class="chip">Prep: 15 min</span><span class="chip">Bake: 30–40 min</span><span class="chip">Cool: 30 min</span><span class="chip">Makes: 8 slices</span>
+    </div>
+    <div class="toolbar">
+      <button type="button" onclick="window.print()">Print recipe</button>
+      <button type="button" onclick="document.querySelectorAll('.ingredient-list input').forEach(x=>x.checked=false)">Reset ingredient checklist</button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="layout">
+    <section class="card">
+      <h2>Ingredients</h2>
+      <p class="sub">For one small 8-inch / 20-cm round cake</p>
+      <ul class="ingredient-list">
+        <li><input type="checkbox" aria-label="Blanched almond flour"><span class="amount">2 cups</span><span>blanched almond flour (about 200 g)</span></li>
+        <li><input type="checkbox" aria-label="Shredded carrot"><span class="amount">1 cup</span><span>finely shredded carrot, lightly packed (about 100–120 g)</span></li>
+        <li><input type="checkbox" aria-label="Butter"><span class="amount">⅓ cup</span><span>European-style butter, melted and cooled (about 75 g)</span></li>
+        <li><input type="checkbox" aria-label="Coconut sugar"><span class="amount">½ cup</span><span>coconut sugar</span></li>
+        <li><input type="checkbox" aria-label="Coconut flour"><span class="amount">2 tbsp</span><span>coconut flour</span></li>
+        <li><input type="checkbox" aria-label="Leavening"><span class="amount">¼ tsp</span><span>baking soda</span></li>
+        <li><input type="checkbox" aria-label="Citric acid"><span class="amount">⅛ tsp</span><span>food-grade citric acid (to activate the baking soda)</span></li>
+        <li><input type="checkbox" aria-label="Water"><span class="amount">2–4 tbsp</span><span>water, as needed for a thick, scoopable batter</span></li>
+        <li><input type="checkbox" aria-label="Optional spices"><span class="amount">Optional</span><span>½ tsp cinnamon, plus a pinch of salt and/or ginger if available</span></li>
+      </ul>
+      <div class="note warning"><strong>Important:</strong> This ingredient list contains no eggs or other strong binder, so the cake will be tender and more fragile than a conventional carrot cake. Let it cool completely before slicing. For a more reliable, springy cake, add 2 eggs if you have them; reduce the water to 1–2 tbsp.</div>
+      <div class="note"><strong>Optional flours:</strong> Cassava flour or blue corn masa harina are not needed here. They change the texture, so leave them out for the best result with almond flour.</div>
+    </section>
+    <section class="card">
+      <h2>Instructions</h2>
+      <ol class="steps">
+        <li><div><strong>Prepare the oven and pan.</strong><br>Heat oven to 350°F (175°C). Grease an 8-inch round cake pan with a little butter and line the base with parchment paper.</div></li>
+        <li><div><strong>Mix the dry ingredients.</strong><br>In a bowl, whisk almond flour, coconut flour, baking soda, citric acid, and any optional spices and salt. Break up any lumps.</div></li>
+        <li><div><strong>Mix the wet ingredients.</strong><br>Stir melted, cooled butter and coconut sugar together. Fold in the shredded carrot and 2 tablespoons water.</div></li>
+        <li><div><strong>Make the batter.</strong><br>Add the dry mixture to the carrot mixture. Stir until evenly combined. Add more water, 1 tablespoon at a time, only until the batter is thick but scoopable. Avoid overmixing.</div></li>
+        <li><div><strong>Bake.</strong><br>Spread batter evenly in the pan and smooth the top. Bake for 30–40 minutes, until the top is set and the edges are golden. A tester may come out with a few moist crumbs, but not wet batter.</div></li>
+        <li><div><strong>Cool fully before slicing.</strong><br>Cool in the pan for 20 minutes, then carefully transfer to a rack. Allow to cool completely; almond-flour cakes firm up as they cool.</div></li>
+      </ol>
+      <div class="note"><strong>Texture cue:</strong> Coconut flour absorbs moisture quickly. If the batter becomes dry or crumbly, add water a tablespoon at a time. If it looks oily or loose, let it stand for 3–5 minutes before adding anything else.</div>
+    </section>
+    <section class="card">
+      <h2>Timing & serving</h2>
+      <div class="nutrition">
+        <div class="stat"><strong>15 min</strong><span>Prep</span></div>
+        <div class="stat"><strong>30–40 min</strong><span>Bake</span></div>
+        <div class="stat"><strong>8</strong><span>Slices</span></div>
+      </div>
+      <p>Allow about 1 hour 15 minutes to 1 hour 25 minutes from starting to serving, including cooling. Serve plain, or with a little softened butter if desired.</p>
+      <h3>Storage</h3>
+      <p>Because this cake is moist and contains fresh carrot, refrigerate leftovers in a covered container for up to 4 days. Bring slices toward room temperature before serving.</p>
+    </section>
+    <section class="card">
+      <h2>Estimated nutrition</h2>
+      <p class="sub">Approximate per slice, assuming 8 slices and no eggs or frosting.</p>
+      <div class="nutrition">
+        <div class="stat"><strong>~285</strong><span>Calories</span></div>
+        <div class="stat"><strong>~7 g</strong><span>Protein</span></div>
+        <div class="stat"><strong>~24 g</strong><span>Fat</span></div>
+      </div>
+      <div class="nutrition-list">
+        <p><strong>Estimated per slice:</strong> carbohydrates 19–22 g; fiber 4–5 g; sugars 8–10 g; saturated fat 5–6 g; sodium varies with any salt added.</p>
+        <p><strong>Whole cake:</strong> approximately 2,280 calories. Values are estimates and vary by flour brand, carrot moisture, and exact portion size.</p>
+      </div>
+      <div class="note">Nutrition is calculated from typical ingredient values, not laboratory analysis. The optional spices have a negligible effect on the estimate.</div>
+    </section>
+  </div>
+  <p class="footer">A simple, ingredient-led recipe · Adjust sweetness and spice to taste.</p>
+</main>
+</body>
+</html>
